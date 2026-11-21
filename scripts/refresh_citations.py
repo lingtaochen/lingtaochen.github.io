@@ -9,6 +9,7 @@ from pathlib import Path
 import re
 import sys
 import unicodedata
+from urllib.error import HTTPError
 from urllib.parse import parse_qs, urlencode, urlsplit
 from urllib.request import HTTPRedirectHandler, Request, build_opener
 
@@ -23,6 +24,7 @@ PROFILE_URL = "https://scholar.google.com/citations?" + urlencode({
 })
 CATALOG = ROOT / DATA_FILE
 MAX_RESPONSE_BYTES = 2_000_000
+SCHOLAR_UNAVAILABLE = 75
 
 
 @dataclass(frozen=True)
@@ -332,6 +334,8 @@ def main():
         refresh(args.saved_profile)
     except (LookupError, OSError, ValueError) as error:
         print(f"Citation refresh stopped. Previous publication data retained. {error}", file=sys.stderr)
+        if isinstance(error, HTTPError) and error.code in {403, 429}:
+            return SCHOLAR_UNAVAILABLE
         return 1
     return 0
 

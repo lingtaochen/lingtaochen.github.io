@@ -21,13 +21,25 @@ jobs:
     timeout-minutes: 5
     permissions:
       contents: write
+    outputs:
+      catalog_changed: ${{ steps.save.outputs.catalog_changed }}
     steps:
       - uses: actions/checkout@v6
         with:
           ref: main
       - name: Fetch the public Scholar profile once
-        run: python3 scripts/refresh_citations.py
+        run: |
+          status=0
+          python3 scripts/refresh_citations.py || status=$?
+          case "$status" in
+            0) ;;
+            75)
+              echo '::warning title=Google Scholar sync skipped::Google Scholar refused or rate-limited the request. The site continues to show the saved catalog and its last successful refresh time.'
+              ;;
+            *) exit "$status" ;;
+          esac
       - name: Save the refreshed publication catalog
+        id: save
         run: |
           git add assets/js/publications-data.js
           if git diff --cached --quiet; then
@@ -37,11 +49,12 @@ jobs:
               -c user.email='41898282+github-actions[bot]@users.noreply.github.com' \
               commit -m 'Sync Google Scholar publications and citations'
           git push origin HEAD:main
+          echo 'catalog_changed=true' >> "$GITHUB_OUTPUT"
 
   build:
     name: Package the website
     needs: refresh
-    if: ${{ !cancelled() && github.ref == 'refs/heads/main' && (needs.refresh.result == 'success' || needs.refresh.result == 'skipped') }}
+    if: ${{ !cancelled() && github.ref == 'refs/heads/main' && (needs.refresh.result == 'skipped' || needs.refresh.outputs.catalog_changed == 'true') }}
     runs-on: ubuntu-latest
     permissions:
       contents: read
