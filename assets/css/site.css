@@ -1,0 +1,390 @@
+:root {
+  color-scheme: light;
+  --paper: #fff;
+  --header: #f7f8fa;
+  --ink: #232b36;
+  --muted: #505d6b;
+  --accent: #24537a;
+  --accent-light: #eff5fa;
+  --border: #dce3ea;
+  --content-width: 66rem;
+  --gutter: clamp(1rem, 4vw, 2rem);
+  font-family: "Source Sans 3", system-ui, sans-serif;
+}
+
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+
+body {
+  margin: 0;
+  color: var(--ink);
+  background: var(--paper);
+  line-height: 1.6;
+}
+
+a { color: var(--accent); text-underline-offset: .2em; }
+
+a:focus-visible,
+[tabindex]:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 4px;
+}
+
+h1, h2, h3, h4, p { margin: 0; }
+h1, h2, h3, h4 { line-height: 1.25; }
+h1, h2 { letter-spacing: -.025em; }
+
+h1 { font-size: clamp(2rem, 5vw, 3.25rem); }
+h2 { font-size: clamp(1.5rem, 3vw, 2rem); }
+h3 { font-size: 1.2rem; }
+
+.container {
+  width: min(100% - var(--gutter) * 2, var(--content-width));
+  margin-inline: auto;
+}
+
+.skip-link {
+  position: fixed;
+  z-index: 1;
+  top: .75rem;
+  left: 1rem;
+  padding: .5rem .75rem;
+  background: var(--paper);
+  transform: translateY(-200%);
+}
+
+.skip-link:focus { transform: translateY(0); }
+
+.site-header {
+  background: var(--header);
+  border-bottom: 1px solid var(--border);
+}
+
+.header-inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: .25rem 1.5rem;
+  min-height: 4.25rem;
+}
+
+.site-name {
+  color: var(--ink);
+  font-size: 1.125rem;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.site-nav {
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: clamp(.85rem, 3vw, 2rem);
+}
+
+.site-nav a {
+  padding: .95rem 0 .8rem;
+  border-bottom: 2px solid transparent;
+  color: var(--muted);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.site-nav a:hover,
+.site-nav a[aria-current="location"] {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
+}
+
+.site-section { padding-block: clamp(2rem, 5vw, 4rem); }
+
+.home-intro {
+  margin-bottom: clamp(1.5rem, 4vw, 2.5rem);
+  text-align: center;
+}
+
+.home-welcome {
+  margin-bottom: .25rem;
+  font-size: clamp(1.65rem, 4vw, 2.25rem);
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+.profile {
+  display: grid;
+  grid-template-columns: minmax(10rem, 14.5rem) minmax(0, 1fr);
+  align-items: start;
+  gap: clamp(1.5rem, 5vw, 3.5rem);
+}
+
+.portrait {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  border: 1px solid var(--border);
+  border-radius: .5rem;
+  background: var(--header);
+}
+
+.profile-info p { max-width: 58ch; }
+.profile-role { margin-top: .45rem; font-size: 1.25rem; font-weight: 650; }
+.affiliation { margin-block: .4rem 1rem; color: var(--muted); }
+.contact { margin-block: .75rem 1rem; overflow-wrap: anywhere; }
+
+.profile-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .6rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.profile-links a {
+  display: inline-block;
+  border: 1px solid var(--border);
+  border-radius: .35rem;
+  padding: .4rem .75rem;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.profile-links a:hover { background: var(--accent-light); }
+
+.resume {
+  margin-top: clamp(2rem, 5vw, 3.75rem);
+  padding-top: clamp(1.5rem, 4vw, 2.25rem);
+  border-top: 1px solid var(--border);
+}
+
+.resume-grid {
+  --resume-row-gap: 1.8rem;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--resume-row-gap) clamp(1.75rem, 6vw, 4rem);
+  margin-top: 1.4rem;
+}
+
+.resume-column {
+  display: grid;
+  align-content: start;
+  gap: var(--resume-row-gap);
+}
+
+.resume-grid h3 { margin-bottom: .85rem; color: var(--accent); }
+
+.timeline {
+  margin: 0;
+  border-left: 2px solid var(--border);
+  padding-left: 1rem;
+  list-style: none;
+}
+
+.timeline li + li { margin-top: 1rem; }
+.timeline p { margin-top: .25rem; }
+.entry-meta { color: var(--muted); font-size: .95rem; }
+
+.page-heading {
+  margin-bottom: 1.5rem;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 1rem;
+}
+
+.research-introduction {
+  max-width: 72ch;
+  color: var(--muted);
+}
+
+.research-topics { margin-top: clamp(1.25rem, 4vw, 2rem); }
+
+.research-topic {
+  display: grid;
+  grid-template-columns: minmax(12rem, 36%) minmax(0, 1fr);
+  align-items: start;
+  gap: clamp(1rem, 4vw, 2.5rem);
+  padding-block: clamp(1.25rem, 4vw, 2rem);
+}
+
+.research-topic + .research-topic { border-top: 1px solid var(--border); }
+
+.research-figure { margin: 0; }
+
+.research-figure-preview { display: block; }
+
+.research-figure-preview[href] img { background: var(--paper); }
+
+.research-figure img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 10 / 7;
+  object-fit: contain;
+  border: 1px solid var(--border);
+  border-radius: .35rem;
+  background: var(--header);
+}
+
+.research-figure figcaption { margin-top: .35rem; }
+.research-figure-source { margin-left: .35rem; }
+.research-figure-credit { display: block; font-size: .85rem; }
+.research-figure-license { margin-left: .35rem; }
+
+.research-figure-controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: .5rem;
+  margin-top: .6rem;
+}
+
+.research-figure-controls button {
+  padding: .3rem .65rem;
+  border: 1px solid var(--border);
+  border-radius: .3rem;
+  background: var(--paper);
+  color: var(--accent);
+  font: inherit;
+  font-size: .9rem;
+  cursor: pointer;
+}
+
+.research-figure-controls button:hover { background: var(--accent-light); }
+
+.research-figure-controls button:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+.research-figure-count { white-space: nowrap; }
+
+.research-description h2 { font-size: clamp(1.35rem, 3vw, 1.7rem); }
+.research-summary { margin-top: .65rem; }
+
+.research-papers {
+  margin: .8rem 0 0;
+  padding-left: 1.15rem;
+  font-size: .95rem;
+}
+
+.research-papers li + li { margin-top: .2rem; }
+
+.current-projects {
+  margin-top: clamp(1rem, 4vw, 2rem);
+  padding-top: clamp(1.25rem, 4vw, 2rem);
+  border-top: 1px solid var(--border);
+}
+
+.current-projects > h2 {
+  font-size: clamp(2rem, 4vw, 2.5rem);
+}
+
+.current-projects-list {
+  margin: .65rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.current-project { padding-block: .9rem; }
+.current-project + .current-project { border-top: 1px solid var(--border); }
+
+.current-project-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: .25rem .7rem;
+}
+
+.current-project-status {
+  color: var(--accent);
+  font-size: .9rem;
+  font-weight: 600;
+}
+
+.current-project-summary {
+  max-width: 75ch;
+  margin-top: .35rem;
+}
+
+.publications-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: .75rem 1.5rem;
+  margin-bottom: .5rem;
+}
+
+.publication-sort {
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+  font-size: .95rem;
+}
+
+.publication-sort select {
+  padding: .35rem .5rem;
+  border: 1px solid var(--border);
+  border-radius: .35rem;
+  color: var(--ink);
+  background: var(--paper);
+  font: inherit;
+}
+
+.publication-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.publication-table th,
+.publication-table td {
+  padding: .75rem clamp(.4rem, 2vw, 1rem);
+  border-bottom: 1px solid var(--border);
+  vertical-align: top;
+}
+
+.publication-table thead { background: var(--header); }
+
+.publication-paper { overflow-wrap: anywhere; }
+.publication-paper p + p { margin-top: .3rem; }
+
+.publication-author-self {
+  text-decoration: underline;
+  text-underline-offset: .15em;
+}
+
+.publication-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.publication-citations,
+.publication-release-year {
+  width: 1%;
+  white-space: nowrap;
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+td.publication-citations {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.publication-year-heading {
+  background: var(--accent-light);
+  color: var(--accent);
+}
+
+@media (max-width: 42rem) {
+  .header-inner { padding-top: .6rem; }
+  .profile, .resume-grid, .research-topic { grid-template-columns: 1fr; }
+  .portrait { max-width: 11rem; }
+}
+
+@media (max-width: 29rem) {
+  .header-inner { flex-direction: column; align-items: flex-start; }
+}

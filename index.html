@@ -3,13 +3,221 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Lingtao Chen, Ph.D. student in Computer Science at Kennesaw State University. Résumé and publications.">
   <title>Lingtao Chen</title>
-  <style>
-    body { margin: 0; min-height: 100vh; display: grid; place-items: center; font-family: system-ui, sans-serif; color: #172033; background: #fafafa; }
-    h1 { margin: 0; padding: 2rem; font-size: clamp(2rem, 6vw, 3.5rem); font-weight: 600; text-align: center; }
-  </style>
+  <link rel="stylesheet" href="assets/css/site.css">
+  <script defer src="assets/js/navigation.js"></script>
+  <script defer src="assets/js/publications-data.js"></script>
+  <script defer src="assets/js/research-data.js"></script>
+  <script defer src="assets/js/research.js"></script>
+  <script defer src="assets/js/publications.js"></script>
 </head>
 <body>
-  <h1>Lingtao Chen</h1>
+  <a class="skip-link" href="#main-content">Skip to content</a>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="site-name" href="#home">Lingtao Chen</a>
+      <nav class="site-nav" aria-label="Main navigation">
+        <a href="#home">Home</a>
+        <a href="#research">Research</a>
+        <a href="#publications">Publications</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main-content" class="container" tabindex="-1">
+    <section id="home" class="site-section" aria-labelledby="home-title">
+      <div class="home-intro">
+        <p class="home-welcome">Welcome to My Homepage</p>
+        <p class="entry-meta">Last updated <time id="site-updated" datetime="2026-11-18">November 18, 2026</time></p>
+      </div>
+
+      <div class="profile">
+        <img class="portrait" src="assets/images/selfie.jpeg" width="480" height="600" alt="">
+        <div class="profile-info">
+          <h1 id="home-title" tabindex="-1">Lingtao Chen</h1>
+          <p class="profile-role">Ph.D. Student in Computer Science</p>
+          <p class="affiliation">Kennesaw State University<br>College of Computing and Software Engineering</p>
+          <p>I study machine learning and explainable AI for computational biology, with a focus on protein–protein binding affinity prediction and molecular dynamics.</p>
+          <p class="contact"><a href="mailto:lchen25@students.kennesaw.edu">lchen25@students.kennesaw.edu</a></p>
+          <ul class="profile-links" aria-label="Academic and professional profiles">
+            <li><a href="https://scholar.google.com/citations?user=7DQMP0EAAAAJ" target="_blank" rel="noopener">Google Scholar</a></li>
+            <li><a href="https://www.linkedin.com/in/lingtao-chen-6592261a2/" target="_blank" rel="noopener">LinkedIn</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <section class="resume" aria-labelledby="resume-title">
+        <h2 id="resume-title">Résumé</h2>
+        <div class="resume-grid">
+          <div class="resume-column">
+            <section aria-labelledby="education-title">
+              <h3 id="education-title">Education</h3>
+              <ul class="timeline">
+                <li>
+                  <h4>Ph.D. in Computer Science</h4>
+                  <p class="entry-meta">Kennesaw State University · 2023–2027 (expected)</p>
+                </li>
+                <li>
+                  <h4>B.S. in Pure Mathematics and Computational Science</h4>
+                  <p class="entry-meta">University of South Carolina Beaufort · 2021</p>
+                  <p>Double major</p>
+                </li>
+              </ul>
+            </section>
+
+            <section aria-labelledby="service-title">
+              <h3 id="service-title">Professional Service</h3>
+              <ul class="timeline">
+                <li>
+                  <h4>Journal Reviewer</h4>
+                  <p>
+                    Peer reviewer for <em>IEEE Transactions on Computational Biology and Bioinformatics</em>,
+                    <em>Genes</em>, <em>Journal of Pharmaceutical Innovation</em>,
+                    <em>Frontiers in Immunology</em> (Multiple Sclerosis and Neuroimmunology),
+                    and <em>Journal of Proteins and Proteomics</em>.
+                  </p>
+                </li>
+                <li>
+                  <h4>Conference Reviewer</h4>
+                  <p>ICASSP 2027 and the IEEE ICHI 2026 Young Scholar Symposium.</p>
+                </li>
+                <li>
+                  <h4>Student Volunteer</h4>
+                  <p class="entry-meta">INFORMS Annual Meeting · 2025</p>
+                </li>
+              </ul>
+            </section>
+          </div>
+          <div class="resume-column">
+            <section aria-labelledby="experience-title">
+              <h3 id="experience-title">Research Experience</h3>
+              <ul class="timeline">
+                <li>
+                  <h4>Graduate Research Assistant</h4>
+                  <p class="entry-meta">Kennesaw State University · Fall 2023–present</p>
+                  <p>Develop interpretable machine learning models for protein binding affinity and analyze molecular dynamics simulations.</p>
+                </li>
+                <li>
+                  <h4>Science Undergraduate Laboratory Intern</h4>
+                  <p class="entry-meta">Oak Ridge National Laboratory · August 2021–May 2022</p>
+                  <p>Used process mining to study hospital patient flows and machine learning to predict length of stay for patients with sepsis.</p>
+                </li>
+              </ul>
+            </section>
+
+            <section aria-labelledby="teaching-title">
+              <h3 id="teaching-title">Teaching Experience</h3>
+              <ul class="timeline">
+                <li>
+                  <h4>Graduate Teaching Assistant</h4>
+                  <p class="entry-meta">Kennesaw State University · Fall 2023, Summer and Fall 2024, and Fall 2025</p>
+                  <p>Supported labs for CSE 1321 and CSE 1322 and helped students with Python, Java, and C#.</p>
+                </li>
+              </ul>
+            </section>
+          </div>
+        </div>
+      </section>
+    </section>
+
+    <section id="research" class="site-section" aria-labelledby="research-title">
+      <div class="page-heading">
+        <h1 id="research-title" tabindex="-1">Research</h1>
+      </div>
+      <p class="research-introduction"></p>
+      <div class="research-topics"></div>
+
+      <section class="current-projects" aria-labelledby="current-projects-title" hidden>
+        <h2 id="current-projects-title">Current Projects</h2>
+        <ul class="current-projects-list"></ul>
+      </section>
+      <noscript><p>Enable JavaScript to view the research summaries.</p></noscript>
+
+      <template id="current-project">
+        <li class="current-project">
+          <div class="current-project-header">
+            <h3></h3>
+            <p class="current-project-status"></p>
+          </div>
+          <p class="current-project-summary"></p>
+        </li>
+      </template>
+
+      <template id="research-topic">
+        <article class="research-topic">
+          <div class="research-media">
+            <figure class="research-figure">
+              <a class="research-figure-preview" target="_blank" rel="noopener">
+                <img width="800" height="560" loading="lazy" decoding="async" alt="">
+              </a>
+              <figcaption class="entry-meta">
+                <span class="research-figure-caption"></span>
+                <a class="research-figure-source" target="_blank" rel="noopener" hidden>Paper</a>
+                <span class="research-figure-credit" hidden>
+                  <a class="research-figure-credit-source" target="_blank" rel="noopener"></a>
+                  <a class="research-figure-license" target="_blank" rel="noopener" hidden>CC BY 4.0</a>
+                </span>
+              </figcaption>
+            </figure>
+            <div class="research-figure-controls" role="group" aria-label="Figure controls" hidden>
+              <button class="research-figure-previous" type="button" aria-label="Previous figure">Previous</button>
+              <span class="research-figure-count entry-meta" aria-live="polite"></span>
+              <button class="research-figure-next" type="button" aria-label="Next figure">Next</button>
+            </div>
+          </div>
+          <div class="research-description">
+            <h2></h2>
+            <p class="research-summary"></p>
+            <ul class="research-papers"></ul>
+          </div>
+        </article>
+      </template>
+    </section>
+
+    <section id="publications" class="site-section" aria-labelledby="publications-title">
+      <div class="page-heading">
+        <h1 id="publications-title" tabindex="-1">Publications</h1>
+      </div>
+
+      <div class="publications-toolbar">
+        <p class="entry-meta"><a id="scholar-profile-link" href="https://scholar.google.com/citations?user=7DQMP0EAAAAJ" target="_blank" rel="noopener">Google Scholar</a> paper links, citation counts, and “Cited by” links last updated: <time id="citation-updated">Not yet available</time>
+          <span id="citation-retained" hidden>Some papers show previously verified Scholar data.</span>
+        </p>
+        <label class="publication-sort" hidden>
+          Sort by
+          <select id="publication-sort">
+            <option value="citations">Citation count</option>
+            <option value="year">Publication year</option>
+          </select>
+        </label>
+      </div>
+
+      <noscript><p>Enable JavaScript to view the publications table.</p></noscript>
+
+      <table class="publication-table" aria-labelledby="publications-title">
+        <thead>
+          <tr>
+            <th scope="col">Paper</th>
+            <th scope="col" class="publication-citations" data-sort="citations">Cited by</th>
+            <th scope="col" class="publication-release-year" data-sort="year">Year</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+
+      <template id="publication-row">
+        <tr>
+          <td class="publication-paper">
+            <p class="publication-title"></p>
+            <p class="publication-authors"></p>
+            <p class="entry-meta publication-venue"><cite></cite></p>
+          </td>
+          <td class="publication-citations" aria-label="Citation count unavailable">—</td>
+          <td class="publication-release-year"></td>
+        </tr>
+      </template>
+    </section>
+  </main>
 </body>
 </html>

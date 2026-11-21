@@ -1,0 +1,75 @@
+name: Publish website and sync Google Scholar
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+  schedule:
+    - cron: '17 12 * * *' # Once daily at 12:17 UTC.
+
+permissions: {}
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    name: Sync Google Scholar publications and citations
+    if: github.event_name == 'schedule' && github.run_attempt == 1
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          ref: main
+      - name: Fetch the public Scholar profile once
+        run: python3 scripts/refresh_citations.py
+      - name: Save the refreshed publication catalog
+        run: |
+          git add assets/js/publications-data.js
+          if git diff --cached --quiet; then
+            exit 0
+          fi
+          git -c user.name='github-actions[bot]' \
+              -c user.email='41898282+github-actions[bot]@users.noreply.github.com' \
+              commit -m 'Sync Google Scholar publications and citations'
+          git push origin HEAD:main
+
+  build:
+    name: Package the website
+    needs: refresh
+    if: ${{ !cancelled() && github.ref == 'refs/heads/main' && (needs.refresh.result == 'success' || needs.refresh.result == 'skipped') }}
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          ref: main
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Copy public files
+        run: |
+          mkdir "$RUNNER_TEMP/website"
+          cp -R index.html assets "$RUNNER_TEMP/website/"
+          python3 scripts/stamp_site_date.py "$RUNNER_TEMP/website/index.html"
+      - uses: actions/upload-pages-artifact@v4
+        with:
+          path: ${{ runner.temp }}/website
+
+  deploy:
+    name: Deploy to GitHub Pages
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/deploy-pages@v4
+        id: deployment
