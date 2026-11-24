@@ -34,4 +34,4 @@ The sync makes one signed-out request to the public profile’s Year view, witho
 
 For offline debugging, run `python3 scripts/refresh_citations.py --saved-profile path/to/scholar.html` with a saved profile response from the Year view. The script uses its file modification time as the snapshot time.
 
-If Scholar responds with HTTP 403 or 429, the scheduled run records a warning and leaves the published catalog and its last successful refresh time intact. The workflow tries again at its next daily run. Unexpected errors still fail the job so they can be investigated in Actions.
+If Scholar responds with HTTP 403 or 429, or the response fails the initial Year view checks, the scheduled run records a warning and leaves the published catalog and its last successful refresh time intact. The workflow tries again at its next daily run. Unexpected errors still fail the job so they can be investigated in Actions.

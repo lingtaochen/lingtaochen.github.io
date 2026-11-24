@@ -34,7 +34,7 @@ jobs:
           case "$status" in
             0) ;;
             75)
-              echo '::warning title=Google Scholar sync skipped::Google Scholar refused or rate-limited the request. The site continues to show the saved catalog and its last successful refresh time.'
+              echo '::warning title=Google Scholar sync skipped::A usable Google Scholar Year view was unavailable. The site continues to show the saved catalog and its last successful refresh time.'
               ;;
             *) exit "$status" ;;
           esac

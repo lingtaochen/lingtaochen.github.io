@@ -27,6 +27,10 @@ MAX_RESPONSE_BYTES = 2_000_000
 SCHOLAR_UNAVAILABLE = 75
 
 
+class ScholarYearViewUnavailable(ValueError):
+    """The response could not be verified as the Scholar Year view."""
+
+
 @dataclass(frozen=True)
 class Publication:
     title: str
@@ -311,7 +315,7 @@ def refresh(saved_profile):
     profile.close()
     years = [record.publication.year for record in profile.records.values()]
     if not profile.is_year_view or not years or years != sorted(years, reverse=True):
-        raise ValueError("Scholar did not return the Year view with publications")
+        raise ScholarYearViewUnavailable("Scholar did not return the Year view with publications")
 
     papers, count, added = sync_papers(catalog["papers"], profile.records)
     updated_at = fetched_at.isoformat(timespec="seconds").replace("+00:00", "Z")
@@ -334,7 +338,9 @@ def main():
         refresh(args.saved_profile)
     except (LookupError, OSError, ValueError) as error:
         print(f"Citation refresh stopped. Previous publication data retained. {error}", file=sys.stderr)
-        if isinstance(error, HTTPError) and error.code in {403, 429}:
+        if isinstance(error, ScholarYearViewUnavailable) or (
+            isinstance(error, HTTPError) and error.code in {403, 429}
+        ):
             return SCHOLAR_UNAVAILABLE
         return 1
     return 0
