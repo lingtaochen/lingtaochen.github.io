@@ -9,6 +9,7 @@ globalThis.publicationData = {
       "venue": "IEEE International Conference on Healthcare Informatics (ICHI)",
       "details": ", pp. 574–581.",
       "year": 2026,
+      "githubUrl": "https://github.com/lingtaochen/SOX17-PAH-Structural-Analysis",
       "scholar": {
         "recordId": "WF5omc3nYNoC",
         "paperUrl": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=7DQMP0EAAAAJ&citation_for_view=7DQMP0EAAAAJ%3AWF5omc3nYNoC",
@@ -60,6 +61,7 @@ globalThis.publicationData = {
       "venue": "IEEE International Conference on Tools with Artificial Intelligence (ICTAI)",
       "details": ", pp. 292–298.",
       "year": 2025,
+      "githubUrl": "https://github.com/lingtaochen/ICTAI2025_MD_CNN",
       "scholar": {
         "recordId": "IjCSPb-OGe4C",
         "paperUrl": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=7DQMP0EAAAAJ&citation_for_view=7DQMP0EAAAAJ%3AIjCSPb-OGe4C",
@@ -111,6 +113,7 @@ globalThis.publicationData = {
       "venue": "IEEE International Conference on Tools with Artificial Intelligence (ICTAI)",
       "details": ", pp. 548–555.",
       "year": 2024,
+      "githubUrl": "https://github.com/lingtaochen/PPI-Affinity-CNN-Transformer",
       "scholar": {
         "recordId": "UeHWp8X0CEIC",
         "paperUrl": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=7DQMP0EAAAAJ&citation_for_view=7DQMP0EAAAAJ%3AUeHWp8X0CEIC",

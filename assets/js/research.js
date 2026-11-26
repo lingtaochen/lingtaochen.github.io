@@ -101,6 +101,15 @@ function renderResearchTopic(topic) {
       item.textContent = paper.title;
     }
     item.append(` (${paper.year})`);
+    if (paper.githubUrl) {
+      const githubLink = document.createElement("a");
+      githubLink.href = paper.githubUrl;
+      githubLink.target = "_blank";
+      githubLink.rel = "noopener";
+      githubLink.textContent = "GitHub";
+      githubLink.setAttribute("aria-label", `GitHub repository for ${paper.title}`);
+      item.append(" · ", githubLink);
+    }
     list.append(item);
   }
   list.hidden = !list.childElementCount;

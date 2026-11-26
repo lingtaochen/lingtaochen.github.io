@@ -7,7 +7,7 @@ HEADER = (
     "// Publication catalog. Edit bibliographic fields here; the Scholar sync updates the scholar section.\n"
     "globalThis.publicationData = "
 )
-CONTENT_FIELDS = ("title", "authors", "venue", "details", "year")
+CONTENT_FIELDS = ("title", "authors", "venue", "details", "year", "githubUrl")
 
 
 def parse_catalog(text):
