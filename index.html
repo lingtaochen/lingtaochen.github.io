@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Lingtao Chen, Ph.D. student in Computer Science at Kennesaw State University. Résumé and publications.">
   <title>Lingtao Chen</title>
+  <script src="assets/js/theme.js"></script>
   <link rel="stylesheet" href="assets/css/site.css">
   <script defer src="assets/js/navigation.js"></script>
   <script defer src="assets/js/publications-data.js"></script>
@@ -15,13 +16,21 @@
 <body>
   <a class="skip-link" href="#main-content">Skip to content</a>
   <header class="site-header">
-    <div class="container header-inner">
+    <div class="header-inner">
       <a class="site-name" href="#home">Lingtao Chen</a>
       <nav class="site-nav" aria-label="Main navigation">
         <a href="#home">Home</a>
         <a href="#research">Research</a>
         <a href="#publications">Publications</a>
       </nav>
+      <label class="select-control theme-picker" hidden>
+        Theme
+        <select id="site-theme">
+          <option value="system">System Default</option>
+          <option value="day">Day</option>
+          <option value="night">Night</option>
+        </select>
+      </label>
     </div>
   </header>
 
@@ -184,7 +193,7 @@
         <p class="entry-meta"><a id="scholar-profile-link" href="https://scholar.google.com/citations?user=7DQMP0EAAAAJ" target="_blank" rel="noopener">Google Scholar</a> paper links, citation counts, and “Cited by” links last updated: <time id="citation-updated">Not yet available</time>
           <span id="citation-retained" hidden>Some papers show previously verified Scholar data.</span>
         </p>
-        <label class="publication-sort" hidden>
+        <label class="select-control" hidden>
           Sort by
           <select id="publication-sort">
             <option value="citations">Citation count</option>
