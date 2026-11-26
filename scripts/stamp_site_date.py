@@ -1,7 +1,8 @@
-"""Set the homepage's update date in the copy being published."""
+"""Set the homepage date and version its static assets in the published copy."""
 
 import argparse
 from datetime import date
+from hashlib import sha256
 from pathlib import Path
 import re
 import subprocess
@@ -10,6 +11,10 @@ from publication_data import DATA_FILE, parse_catalog, publication_content
 
 ROOT = Path(__file__).resolve().parents[1]
 SITE_FILES = ("index.html", "assets")
+ASSET_REFERENCE = re.compile(
+    r'(?P<prefix><(?:link|script)\b[^>]*?\s(?:href|src)=")'
+    r'(?P<path>assets/(?:css|js)/[^"?#]+\.(?:css|js))"'
+)
 
 
 def git_output(*args):
@@ -42,6 +47,21 @@ def latest_site_date():
     raise SystemExit("Could not find a commit that changed the website content.")
 
 
+def version_static_assets(html, directory):
+    def version_reference(match):
+        path = Path(match["path"])
+        content = (directory / path).read_bytes()
+        digest = sha256(content).hexdigest()[:12]
+        if path.stem.endswith(f".{digest}"):
+            return match[0]
+
+        versioned = path.with_name(f"{path.stem}.{digest}{path.suffix}")
+        (directory / versioned).write_bytes(content)
+        return f'{match["prefix"]}{versioned.as_posix()}"'
+
+    return ASSET_REFERENCE.sub(version_reference, html)
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("homepage", type=Path, help="Homepage in the deployment copy")
@@ -54,7 +74,7 @@ def main():
     stamped, count = re.subn(r'<time id="site-updated" datetime="[^"]*">[^<]*</time>', tag, html)
     if count != 1:
         raise SystemExit("Expected exactly one homepage update date in the deployment copy.")
-    homepage.write_text(stamped, encoding="utf-8")
+    homepage.write_text(version_static_assets(stamped, homepage.parent), encoding="utf-8")
 
 
 if __name__ == "__main__":

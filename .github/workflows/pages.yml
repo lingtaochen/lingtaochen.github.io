@@ -64,7 +64,7 @@ jobs:
           ref: main
           fetch-depth: 0
           persist-credentials: false
-      - name: Copy public files
+      - name: Prepare public files
         run: |
           mkdir "$RUNNER_TEMP/website"
           cp -R index.html assets "$RUNNER_TEMP/website/"

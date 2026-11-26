@@ -2,6 +2,8 @@
 
 Open `index.html` in a browser to preview changes locally. The site has no dependencies or local build step.
 
+The Pages build gives stylesheets and scripts filenames based on their contents. When an asset changes, the published page requests it at a new URL.
+
 ## Update the content
 
 - **Homepage update date** — GitHub Pages uses the latest change to the website or to the publication details in the catalog. Scholar-only changes to counts, links, and sort order leave the date alone. A direct browser preview shows the fallback date in `index.html`.
