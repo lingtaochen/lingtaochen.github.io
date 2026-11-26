@@ -1,6 +1,6 @@
 // Publication catalog. Edit bibliographic fields here; the Scholar sync updates the scholar section.
 globalThis.publicationData = {
-  "updatedAt": "2026-11-22T19:42:41Z",
+  "updatedAt": "2026-11-26T02:49:25Z",
   "papers": [
     {
       "id": "WF5omc3nYNoC",
@@ -148,7 +148,7 @@ globalThis.publicationData = {
       "scholar": {
         "recordId": "2osOgNQ5qMEC",
         "paperUrl": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=7DQMP0EAAAAJ&citation_for_view=7DQMP0EAAAAJ%3A2osOgNQ5qMEC",
-        "citationCount": 204,
+        "citationCount": 208,
         "citedByUrl": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=13413396375100042754",
         "year": 2024,
         "yearRank": 7,
@@ -165,7 +165,7 @@ globalThis.publicationData = {
       "scholar": {
         "recordId": "u-x6o8ySG0sC",
         "paperUrl": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=7DQMP0EAAAAJ&citation_for_view=7DQMP0EAAAAJ%3Au-x6o8ySG0sC",
-        "citationCount": 80,
+        "citationCount": 81,
         "citedByUrl": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=13713002765111810129%2C9127639648385112964",
         "year": 2024,
         "yearRank": 9,
