@@ -73,19 +73,8 @@ function renderResearchFigures(media, figures) {
   updateFigure();
 }
 
-function renderResearchTopic(topic) {
-  const row = researchTemplate.content.firstElementChild.cloneNode(true);
-  const heading = row.querySelector("h2");
-  heading.id = `research-${topic.id}`;
-  heading.textContent = topic.title;
-  row.setAttribute("aria-labelledby", heading.id);
-  row.querySelector(".research-summary").textContent = topic.summary;
-
-  const figures = topic.figures ?? (topic.figure ? [topic.figure] : []);
-  renderResearchFigures(row.querySelector(".research-media"), figures);
-
-  const list = row.querySelector(".research-papers");
-  for (const id of topic.paperIds) {
+function renderResearchPapers(list, paperIds) {
+  for (const id of paperIds) {
     const paper = researchPapers.get(id);
     if (!paper) continue;
     const item = document.createElement("li");
@@ -113,26 +102,46 @@ function renderResearchTopic(topic) {
     list.append(item);
   }
   list.hidden = !list.childElementCount;
+}
+
+function renderResearchTopic(topic) {
+  const row = researchTemplate.content.firstElementChild.cloneNode(true);
+  const heading = row.querySelector("h2");
+  heading.id = `research-${topic.id}`;
+  heading.textContent = topic.title;
+  row.setAttribute("aria-labelledby", heading.id);
+  row.querySelector(".research-summary").textContent = topic.summary;
+
+  const figures = topic.figures ?? (topic.figure ? [topic.figure] : []);
+  renderResearchFigures(row.querySelector(".research-media"), figures);
+
+  renderResearchPapers(row.querySelector(".research-papers"), topic.paperIds);
   return row;
 }
 
 researchSection.querySelector(".research-introduction").textContent = researchContent.introduction;
 researchSection.querySelector(".research-topics").append(...researchContent.topics.map(renderResearchTopic));
 
-function renderCurrentProjects(projects) {
-  const section = researchSection.querySelector(".current-projects");
-  const list = section.querySelector(".current-projects-list");
-  const template = document.getElementById("current-project");
+function renderResearchList(sectionId, entries) {
+  const section = document.getElementById(sectionId);
+  const list = section.querySelector(".research-list");
+  const template = document.getElementById("research-list-item");
 
-  for (const project of projects) {
+  for (const entry of entries) {
     const item = template.content.firstElementChild.cloneNode(true);
-    item.querySelector("h3").textContent = project.title;
-    item.querySelector(".current-project-status").textContent = project.status;
-    item.querySelector(".current-project-summary").textContent = project.summary;
+    item.querySelector("h3").textContent = entry.title;
+    if (entry.status) {
+      const status = item.querySelector(".research-list-status");
+      status.textContent = entry.status;
+      status.hidden = false;
+    }
+    item.querySelector(".research-list-summary").textContent = entry.summary;
+    renderResearchPapers(item.querySelector(".research-papers"), entry.paperIds ?? []);
     list.append(item);
   }
 
   section.hidden = !list.childElementCount;
 }
 
-renderCurrentProjects(researchContent.currentProjects ?? []);
+renderResearchList("current-projects", researchContent.currentProjects ?? []);
+renderResearchList("selected-collaborations", researchContent.selectedCollaborations ?? []);

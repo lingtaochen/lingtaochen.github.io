@@ -295,39 +295,39 @@ h3 { font-size: 1.2rem; }
 
 .research-papers li + li { margin-top: .2rem; }
 
-.current-projects {
+.research-list-section {
   margin-top: clamp(1rem, 4vw, 2rem);
   padding-top: clamp(1.25rem, 4vw, 2rem);
   border-top: 1px solid var(--border);
 }
 
-.current-projects > h2 {
+.research-list-section > h2 {
   font-size: clamp(2rem, 4vw, 2.5rem);
 }
 
-.current-projects-list {
+.research-list {
   margin: .65rem 0 0;
   padding: 0;
   list-style: none;
 }
 
-.current-project { padding-block: .9rem; }
-.current-project + .current-project { border-top: 1px solid var(--border); }
+.research-list-item { padding-block: .9rem; }
+.research-list-item + .research-list-item { border-top: 1px solid var(--border); }
 
-.current-project-header {
+.research-list-header {
   display: flex;
   flex-wrap: wrap;
   align-items: baseline;
   gap: .25rem .7rem;
 }
 
-.current-project-status {
+.research-list-status {
   color: var(--accent);
   font-size: .9rem;
   font-weight: 600;
 }
 
-.current-project-summary {
+.research-list-summary {
   max-width: 75ch;
   margin-top: .35rem;
 }

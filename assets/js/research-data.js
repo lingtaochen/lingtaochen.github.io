@@ -146,4 +146,26 @@ globalThis.researchData = {
       summary: "We’re extending our SOX17 study with additional molecular dynamics simulations to examine how variants associated with pulmonary arterial hypertension affect protein structure and stability.",
     },
   ],
+  selectedCollaborations: [
+    {
+      title: "Molecular dynamics acceleration",
+      summary: "We developed AccelMD, which learns from short molecular dynamics simulations to predict longer protein trajectories and reduce runtime on the tested systems.",
+      paperIds: ["Tyk-4Ss8FVUC"],
+    },
+    {
+      title: "Coronavirus–host receptor interactions",
+      summary: "We used molecular dynamics to study how SARS-CoV-2 variants and MERS-CoV interact with their respective human receptors.",
+      paperIds: ["9yKSN-GCB0IC", "W7OEmFMy1HYC"],
+    },
+    {
+      title: "Alzheimer’s disease data and imaging",
+      summary: "We reviewed data resources for Alzheimer’s disease and related dementias and evaluated a model that combines MRI and PET to distinguish Alzheimer’s disease, mild cognitive impairment, and normal cognition.",
+      paperIds: ["YsMSGLbcyi4C", "zYLM7Y9cAGgC"],
+    },
+    {
+      title: "DNA damage and repair",
+      summary: "We reviewed DNA repair pathways, research databases, and computational methods for studying the enzymes that repair DNA damage.",
+      paperIds: ["u-x6o8ySG0sC"],
+    },
+  ],
 };

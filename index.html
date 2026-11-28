@@ -138,19 +138,24 @@
       <p class="research-introduction"></p>
       <div class="research-topics"></div>
 
-      <section class="current-projects" aria-labelledby="current-projects-title" hidden>
+      <section id="current-projects" class="research-list-section" aria-labelledby="current-projects-title" hidden>
         <h2 id="current-projects-title">Current Projects</h2>
-        <ul class="current-projects-list"></ul>
+        <ul class="research-list"></ul>
+      </section>
+      <section id="selected-collaborations" class="research-list-section" aria-labelledby="selected-collaborations-title" hidden>
+        <h2 id="selected-collaborations-title">Selected Collaborations</h2>
+        <ul class="research-list"></ul>
       </section>
       <noscript><p>Enable JavaScript to view the research summaries.</p></noscript>
 
-      <template id="current-project">
-        <li class="current-project">
-          <div class="current-project-header">
+      <template id="research-list-item">
+        <li class="research-list-item">
+          <div class="research-list-header">
             <h3></h3>
-            <p class="current-project-status"></p>
+            <p class="research-list-status" hidden></p>
           </div>
-          <p class="current-project-summary"></p>
+          <p class="research-list-summary"></p>
+          <ul class="research-papers" aria-label="Related papers" hidden></ul>
         </li>
       </template>
 
